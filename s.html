@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mario Coins Navbar</title>
+  <style>
+    body { margin: 0; background: #111; color: white; font-family: Arial; }
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+      font-size: 1.3rem;
+      position: relative;
+    }
+    .apply-btn {
+      background: #27ae60;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+    }
+    .mario {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      animation: climb 12s linear infinite;
+    }
+    @keyframes climb {
+      from { left: 0; }
+      to { left: 100%; }
+    }
+    .coin {
+      position: absolute;
+      top: -20px;
+      font-size: 1.5rem;
+      color: gold;
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .coin.collected {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div>Home <span class="coin">🪙</span></div>
+    <div>Programs <span class="coin">🪙</span></div>
+    <div>Gigalabs <span class="coin">🪙</span></div>
+    <div>Blog <span class="coin">🪙</span></div>
+    <div>About Us <span class="coin">🪙</span></div>
+    <button class="apply-btn">Apply</button>
+    <img src="hg-win-unscreen.gif" id="mario" class="mario">
+  </div>
+
+  <script>
+    let step = 0;
+    setInterval(() => {
+      const coins = document.querySelectorAll(".coin");
+      if (step < coins.length) {
+        coins[step].classList.add("collected");
+      }
+      step++;
+      if (step > coins.length) step = 0;
+    }, 2000);
+  </script>
+</body>
+</html>
+
